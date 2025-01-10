@@ -1,0 +1,30 @@
+# Node modules
+node_modules/
+
+# Environment variables
+.env
+
+# Build output
+dist/
+build/
+
+# Logs
+logs/
+*.log
+
+# Coverage reports
+coverage/
+
+# System files
+.DS_Store
+
+# Temporary files
+*.tmp
+*.swp
+
+# IDE-specific files
+.vscode/
+.idea/
+
+# Production files
+*.local
