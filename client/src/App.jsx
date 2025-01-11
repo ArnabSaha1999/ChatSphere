@@ -6,7 +6,6 @@ import Profile from "./pages/profile";
 import { useAppStore } from "./store";
 import { apiClient } from "./lib/api-client";
 import { GET_USER_INFO } from "./utils/constants";
-import { UndoIcon } from "lucide-react";
 
 const App = () => {
   const { userInfo, setUserInfo } = useAppStore();
@@ -23,7 +22,6 @@ const App = () => {
         } else {
           setUserInfo(undefined);
         }
-        console.log(res);
       } catch (error) {
         setUserInfo(undefined);
       } finally {
