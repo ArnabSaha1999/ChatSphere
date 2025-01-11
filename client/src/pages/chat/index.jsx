@@ -1,8 +1,10 @@
-import { Toast } from "@/components/ui/toast";
 import { useToast } from "@/hooks/use-toast";
 import { useAppStore } from "@/store";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import ContactsContainer from "./components/ContactsContainer";
+import EmptyChatContainer from "./components/EmptyChatContainer";
+import ChatContainer from "./components/ChatContainer";
 
 const Chat = () => {
   const { toast } = useToast();
@@ -17,7 +19,13 @@ const Chat = () => {
       navigate("/profile");
     }
   }, [userInfo, navigate]);
-  return <div>Chat Page</div>;
+  return (
+    <div className="flex h-[100vh] text-white overflow-hidden poppins-medium">
+      <ContactsContainer />
+      {/* <EmptyChatContainer /> */}
+      <ChatContainer />
+    </div>
+  );
 };
 
 export default Chat;
