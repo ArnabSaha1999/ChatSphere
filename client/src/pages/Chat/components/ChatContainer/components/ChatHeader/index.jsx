@@ -28,7 +28,7 @@ const ChatHeader = () => {
               )}
             </Avatar>
           </div>
-          <div>
+          <div className="overflow-hidden text-ellipsis whitespace-nowrap max-w-[300px] md:max-w-[350px] lg:max-w-[600px] xl:max-w-[850px]">
             {selectedChatType === "contact" && selectedChatData.firstName
               ? `${selectedChatData.firstName} ${selectedChatData.lastName}`
               : selectedChatData.email}
