@@ -3,13 +3,13 @@ import mongoose from "mongoose";
 const messageSchema = new mongoose.Schema({
   sender: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Users",
+    ref: "User",
     required: [true, "Message should have a sender"],
   },
 
   recipient: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Users",
+    ref: "User",
     required: [true, "Message should have receiver"],
   },
 
@@ -24,17 +24,17 @@ const messageSchema = new mongoose.Schema({
     required: function () {
       return this.messageType === "text";
     },
-    fileURL: {
-      type: String,
-      required: function () {
-        return this.messageType === "file";
-      },
+  },
+  fileURL: {
+    type: String,
+    required: function () {
+      return this.messageType === "file";
     },
+  },
 
-    timestamp: {
-      type: Date,
-      defult: Date.now(),
-    },
+  timestamp: {
+    type: Date,
+    default: () => new Date(),
   },
 });
 

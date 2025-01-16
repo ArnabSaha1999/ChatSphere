@@ -29,10 +29,10 @@ const setupSocket = (server) => {
       .populate("sender", "id email firstName lastName image color")
       .populate("recipient", "id email firstName lastName image color");
     if (recipientSocketId) {
-      io.to(recipientSocketId.emit("receiveMessage", messageData));
+      io.to(recipientSocketId).emit("receiveMessage", messageData);
     }
     if (senderSocketId) {
-      io.to(senderSocketId.emit("receiveMessage", messageData));
+      io.to(senderSocketId).emit("receiveMessage", messageData);
     }
   };
 
