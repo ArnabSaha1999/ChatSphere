@@ -7,6 +7,8 @@ import authRoutes from "./routes/AuthRoutes.js";
 import contactRoutes from "./routes/ContactRoutes.js";
 import setupSocket from "./socket.js";
 import messageRoutes from "./routes/MessageRoutes.js";
+import path from "path";
+const __dirname = path.resolve();
 
 dotenv.config();
 
@@ -22,7 +24,9 @@ app.use(
   })
 );
 
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use("/uploads/profiles", express.static("uploads/profiles"));
+app.use("/uploads/files", express.static("upload/files"));
 
 app.use(cookieParser());
 app.use(express.json());
