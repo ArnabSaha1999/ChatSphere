@@ -7,7 +7,6 @@ const ContactList = ({ contacts, isChannel = false }) => {
   const {
     selectedChatData,
     setSelectedChatData,
-    selectedChatType,
     setSelectedChatType,
     setSelectedChatMessages,
   } = useAppStore();
@@ -64,7 +63,11 @@ const ContactList = ({ contacts, isChannel = false }) => {
             {isChannel ? (
               <span>{contact.name}</span>
             ) : (
-              <span className="text-ellipsis whitespace-nowrap overflow-x-hidden">{`${contact.firstName} ${contact.lastName}`}</span>
+              <span className="text-ellipsis whitespace-nowrap overflow-x-hidden">
+                {contact.firstName
+                  ? `${contact.firstName} ${contact.lastName}`
+                  : `${contact.email}`}
+              </span>
             )}
           </div>
         </div>

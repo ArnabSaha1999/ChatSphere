@@ -13,7 +13,13 @@ const MessageBar = () => {
   const emojiRef = useRef();
   const fileInputRef = useRef();
   const socket = useSocket();
-  const { selectedChatType, selectedChatData, userInfo } = useAppStore();
+  const {
+    selectedChatType,
+    selectedChatData,
+    userInfo,
+    setIsUploading,
+    setFileUploadProgress,
+  } = useAppStore();
   const [message, setMessage] = useState("");
   const [emojiPickerOpen, setEmojiPickerOpen] = useState(false);
 
@@ -42,7 +48,16 @@ const MessageBar = () => {
         messageType: "text",
         fileURL: undefined,
       });
+    } else if (selectedChatType === "channel") {
+      socket.emit("send-channel-message", {
+        sender: userInfo.id,
+        content: message,
+        messageType: "text",
+        fileURL: undefined,
+        channelId: selectedChatData._id,
+      });
     }
+    setMessage("");
   };
 
   const handleAttachmentClick = () => {
@@ -57,11 +72,14 @@ const MessageBar = () => {
       if (file) {
         const formData = new FormData();
         formData.append("file", file);
+        setIsUploading(true);
         const res = await apiClient.post(UPLOAD_FILE_ROUTE, formData, {
           withCredentials: true,
+          onUploadProgress: data =>
+            setFileUploadProgress(Math.round((100 * data.loaded) / data.total)),
         });
-        console.log(res.data);
         if (res.status === 200 && res.data) {
+          setIsUploading(false);
           if (selectedChatType === "contact") {
             socket.emit("sendMessage", {
               sender: userInfo.id,
@@ -70,10 +88,19 @@ const MessageBar = () => {
               messageType: "file",
               fileURL: res.data.filePath,
             });
+          } else if (selectedChatType === "channel") {
+            socket.emit("send-channel-message", {
+              sender: userInfo.id,
+              content: undefined,
+              messageType: "file",
+              fileURL: res.data.filePath,
+              channelId: selectedChatData._id,
+            });
           }
         }
       }
     } catch (error) {
+      setIsUploading(false);
       console.log(error);
     }
   };
