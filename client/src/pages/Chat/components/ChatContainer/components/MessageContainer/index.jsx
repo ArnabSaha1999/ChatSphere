@@ -1,5 +1,5 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { apiClient } from "@/lib/api-client";
+import { apiClient } from "@/lib/apiClient";
 import { getColor } from "@/lib/utils";
 import { useAppStore } from "@/store";
 import {

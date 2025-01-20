@@ -7,7 +7,7 @@ import { useAppStore } from "@/store";
 import { useSocket } from "@/context/SocketContext";
 import { Input } from "@/components/ui/input";
 import { UPLOAD_FILE_ROUTE } from "@/utils/constants";
-import { apiClient } from "@/lib/api-client";
+import { apiClient } from "@/lib/apiClient";
 
 const MessageBar = () => {
   const emojiRef = useRef();

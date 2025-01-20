@@ -12,7 +12,7 @@ import React from "react";
 import { FaPen } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { MdLogout } from "react-icons/md";
-import { apiClient } from "@/lib/api-client";
+import { apiClient } from "@/lib/apiClient";
 
 const ProfileInfo = () => {
   const { userInfo, setUserInfo } = useAppStore();

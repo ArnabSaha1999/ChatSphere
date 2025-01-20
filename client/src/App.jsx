@@ -4,7 +4,7 @@ import Auth from "./pages/Auth";
 import Chat from "./pages/Chat";
 import Profile from "./pages/Profile";
 import { useAppStore } from "./store";
-import { apiClient } from "./lib/api-client";
+import { apiClient } from "./lib/apiClient";
 import { GET_USER_INFO } from "./utils/constants";
 
 const App = () => {

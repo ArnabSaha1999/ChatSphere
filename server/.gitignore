@@ -28,3 +28,4 @@ coverage/
 
 # Production files
 *.local
+../project_structure.txt

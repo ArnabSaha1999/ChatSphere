@@ -8,7 +8,7 @@ import { FaTrash, FaPlus } from "react-icons/fa";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
-import { apiClient } from "@/lib/api-client";
+import { apiClient } from "@/lib/apiClient";
 import {
   ADD_PROFILE_IMAGE_ROUTE,
   HOST,

@@ -13,7 +13,7 @@ import {
 import { useEffect, useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import { Input } from "@/components/ui/input";
-import { apiClient } from "@/lib/api-client";
+import { apiClient } from "@/lib/apiClient";
 import {
   CREATE_CHANNEL_ROUTE,
   GET_ALL_CONTACTS_ROUTE,

@@ -3,7 +3,7 @@ import Logo from "./components/LogoContainer";
 import NewDM from "./components/NewDM";
 import ProfileInfo from "./components/ProfileInfo";
 import Title from "./components/Title";
-import { apiClient } from "@/lib/api-client";
+import { apiClient } from "@/lib/apiClient";
 import {
   GET_DM_CONTACTS_ROUTE,
   GET_USER_CHANNELS_ROUTE,
